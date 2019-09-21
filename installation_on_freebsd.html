@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="../../favicon.ico">
+
+		<title>Free Open-Source Hosting Platform &laquo;ClonOS&raquo;</title>
+
+		<!-- Bootstrap core CSS -->
+		<link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<link href="/bootstrap/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+		<link href="/bootstrap/docs/examples/sticky-footer-navbar/sticky-footer-navbar.css" rel="stylesheet">
+
+		<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+		<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+		<script src="/bootstrap/docs/assets/js/ie-emulation-modes-warning.js"></script>
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		<style>
+			.jumbotron {background: url(/images/samson-back.jpg) no-repeat 50% 50%; overflow:hidden;color:white;text-shadow:0 0 4px black;}
+		</style>
+		<a href="https://github.com/clonos/control-pane" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="header clearfix">
+				<nav>
+				<ul class="nav nav-pills pull-right">
+					<li role="presentation"><a href="/index.html">About</a></li>
+					<li role="presentation"><a href="/errata.html">Errata</a></li>
+					<li role="presentation"><a href="/roadmap.html">RoadMap</a></li>
+					<li role="presentation"><a href="/installation_from_media.html">Installation</a></li>
+					<li role="presentation" class="active"><a href="/installation_on_freebsd.html">Installation on FreeBSD</a></li>
+					<li role="presentation"><a href="/download.html">Download</a></li>
+					<li role="presentation"><a href="/contact.html">Contact</a></li>
+					<li role="presentation"><a target="_blank" href="https://www.bsdstore.ru/en/donate.html">Support the project</a></li>
+				</ul>
+				</nav>
+				<h3 class="text-muted">Installation on FreeBSD</h3>
+			</div>
+
+			<div class="jumbotron">
+				<h1>ClonOS</h1>
+					<p class="lead">FreeBSD based distro for virtual hosting platform and appliance</p>
+			</div>
+
+			<hr>
+
+			<div class="row marketing">
+				<h3 class="text-muted">Installing ClonOS/CBSD WEB UI via PKG</h3>
+				<h3><p class="lead">ClonOS in pkg packages</p></h3>
+				<p><strong>Daniel Shafer</strong> <a target="_blank" href="https://jenkins.ircdriven.net/job/Update%20clonos%20packages./">prepared</a> a Jenkins task to build ClonOS <a target="_blank" href="https://pkg.ircdriven.net/packages/12amd64-clonos/">pkg package repo</a> (at the moment <strong>FreeBSD 12</strong> only)</p>
+				<p>To enable repository, just put the following lines in <strong>/usr/local/etc/pkg/repos/clonos-pkg.ircdriven.net.conf</strong>:</p>
+				<pre>
+ClonOS-pkg.ircdriven.net: {
+        url: "https://pkg.ircdriven.net/packages/12amd64-clonos/",
+        mirror_type: "none",
+        enabled: yes
+}
+				</pre>
+				<p>Update pkg metafile and install it:</p>
+<pre>
+pkg update -f
+pkg install clonos
+</pre>
+			</div>
+
+			<div class="row marketing">
+				<h3 class="text-muted">Installing ClonOS/CBSD WEB UI on stock FreeBSD</h3>
+				<h3><p class="lead">Install ClonOS and dependencies</p></h3>
+				<ul>
+					<li>Update ports tree first:
+						<pre>portsnap fetch extract</pre>
+					</li>
+					<li>Install ClonOS dependencies:
+						<pre>pkg install -y net/libvncserver security/gnutls databases/sqlite3 shells/bash www/npm \
+www/nginx sysutils/py-supervisor sysutils/cbsd security/ca_root_nss \
+www/node security/sudo databases/sqlite3 net/beanstalkd devel/git devel/pkgconf www/nginx \
+lang/php73 www/php73-session archivers/php73-zip databases/php73-sqlite3 databases/php73-pdo_sqlite \
+www/php73-opcache devel/php73-json security/php73-hash lang/go
+						</pre>
+					</li>
+					<li>Checkout ClonOS ports tree:
+						<pre>git clone https://github.com/clonos/clonos-ports-wip.git /tmp/clonos-ports</pre>
+					</li>
+					<li>Merge ClonOS port with your ports tree:</li>
+						<pre>cp -a /tmp/clonos-ports/* /usr/ports/</pre>
+					</li>
+					<li>Build and install ClonOS</li>
+						<pre>env BATCH=no make -C /usr/ports/www/clonos install</pre>
+					</li>
+				</ul>
+				<p>Follow <strong>post-message</strong> instruction</p>
+				<p>You must merge or copy working configuration files</p>
+				<ul>
+					<li>Check for RACCT is enabled on the host, please add:
+						<pre>
+  kern.racct.enable="1"
+						</pre>
+						into /boot/loader.conf and reboot host
+					</li>
+
+					<li>If <strong>CBSD</strong> still not initialized, do it first:
+						<pre>env workdir=/usr/jails /usr/local/cbsd/sudoexec/initenv</pre>
+						<p>more about CBSD initialization: https://www.bsdstore.ru/en/installing_cbsd.html#initenv</p>
+					</li>
+
+					<li>Ensure CBSD is started:
+						<pre>
+  sysrc cbsdd_enable=YES
+  service cbsdd status || service cbsdd start
+						</pre>
+					</li>
+
+					<li>Configure and run beanstalkd:
+						<pre>
+  sysrc beanstalkd_flags="-l 127.0.0.1 -p 11300"
+  sysrc beanstalkd_enable=YES
+  service beanstalkd restart
+						</pre>
+					</li>
+
+					<li>Change in /usr/local/etc/php-fpm.conf events mechanism to BSD-specific.
+						To do this, uncomment and edit the events.mechanism parameter to:
+						<pre>
+  ..
+  events.mechanism = kqueue
+  ..
+						</pre>
+						Or copy: cp /usr/local/etc/php-fpm.conf.clonos.sample /usr/local/etc/php-fpm.conf
+					</li>
+
+					<li>Uncomment and change in /usr/local/etc/php-fpm.d/www.conf port to Unix socket and
+					set's correct access permission:
+						<pre>
+  ..
+  listen = /tmp/php-fpm.sock
+  ..
+  listen.backlog = -1
+  ..
+  listen.owner = www
+  listen.group = www
+  listen.mode = 0660
+  ..
+						</pre>
+						Or copy: cp /usr/local/etc/php-fpm.d/www-php-fpm.conf.clonos.sample /usr/local/etc/php-fpm.d/www.conf
+					</li>
+
+					<li>Add "www" user to "cbsd" group:
+						<pre>pw groupmod cbsd -M www</pre>
+					</li>
+
+					<li>To execute CBSD commands, let the www user run CBSD through sudo:
+						edit /usr/local/etc/sudoers.d/10_www:
+						<pre>
+  Defaults     env_keep += "workdir DIALOG NOCOLOR"
+  Cmnd_Alias   WEB_CMD = /usr/local/bin/cbsd
+  www   ALL=(ALL) NOPASSWD:SETENV: WEB_CMD
+						</pre>
+						And make sure the file permissions are safe:
+						<pre>
+  chown root:wheel /usr/local/etc/sudoers.d/10_www
+  chmod 0440 /usr/local/etc/sudoers.d/10_www
+						</pre>
+						Or copy: cp /usr/local/etc/sudoers_10_www.clonos.sample /usr/local/etc/sudoers.d/10_www
+					</li>
+
+					<li>Change /usr/local/etc/supervisord.conf to:
+						<pre>
+  [unix_http_server]
+  file=/var/run/supervisor.sock
+  chmod=0777
+  chown=nobody:nobody
+  [supervisorctl]
+  serverurl=unix:///var/run/supervisor.sock
+  [supervisord]
+  logfile=/var/log/supervisor/supervisord.log
+  pidfile=/var/run/supervisor/supervisord.pid
+  nodaemon=false
+  minfds=1024
+  minprocs=200
+  umask=022
+  strip_ansi=false
+  [rpcinterface:supervisor]
+  supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface
+  [include]
+  files=/usr/local/etc/supervisor.d/*.conf
+						</pre>
+						Or copy: cp /usr/local/etc/supervisord.conf.clonos.sample /usr/local/etc/supervisord.conf
+					</li>
+
+					<li>Make sure /usr/local/etc/supervisor.d/program_wsclonos.conf have correct
+						path to CBSD workdir. Please check that line "environment=PATH.." in
+						/usr/local/etc/supervisor.d/program_wsclonos.conf pointed to ~cbsd path
+						in 'cbsd_workdir':
+						<pre>
+  environment=PATH=[.skipp..],cbsd_workdir="/usr/jails"
+                                            ^^^^^^^^^^
+						</pre>
+					</li>
+
+					<li>Change /usr/local/etc/php.ini params:</li>
+						<pre>
+  ..
+  memory_limit = 256M
+  ..
+  post_max_size = 12G
+  ..
+  upload_tmp_dir = /tmp
+  ..
+  upload_max_filesize = 16G
+  ..
+  opcache.enable=1
+						</pre>
+						Or copy: cp /usr/local/etc/php.ini.clonos.sample /usr/local/etc/php.ini
+					</li>
+
+					<li>Configure NGINX: make sure/merge this settings into
+						/usr/local/etc/nginx/nginx.conf:
+						<pre>
+  user www;
+  load_module /usr/local/libexec/nginx/ngx_stream_module.so;
+  events {
+          use kqueue;
+  }
+  http {
+          include       /usr/local/etc/nginx/mime.types;
+          default_type  application/octet-stream;
+          client_max_body_size    1m;
+          include /usr/local/etc/nginx/sites-enabled/*.conf;
+  }
+  stream {
+          include /usr/local/etc/nginx/conf.stream.d/*.conf;
+          include /usr/local/etc/nginx/streams-enabled/*;
+  }
+						</pre>
+						Or copy: cp /usr/local/etc/nginx/nginx.conf.clonos.sample /usr/local/etc/nginx/nginx.conf
+					</li>
+
+					<li>Enable nginx, php-fpm and supervisord to run at system startup:
+						<pre>
+  sysrc nginx_enable="YES"
+  sysrc php_fpm_enable="YES"
+  sysrc supervisord_enable="YES"
+						</pre>
+					</li>
+
+					<li>Start nginx, php-fpm and supervisord to run at system startup:
+						<pre>
+  service nginx restart
+  service php-fpm restart
+  service supervisord restart
+						</pre>
+					</li>
+
+					<li>Configure CBSD:
+						<pre>
+  1)
+    ~cbsd/etc/modules.conf must have:
+
+    pkg.d
+    bsdconf.d
+    zfsinstall.d
+    puppet.d
+    convectix.d
+    cbsd_queue.d
+    vncterm.d
+						</pre>
+						Or copy: cp /usr/local/etc/cbsd-modules.conf.clonos.sample ~cbsd/etc/modules.conf
+						<pre>
+  2) Re-run CBSD initenv to init modules:
+
+    cbsd initenv
+
+  3) Init web user database:
+
+    sh /usr/local/cbsd/modules/forms.d/clonos_database/initforms.sh
+
+  4) Configure and run CBSD RACCT stats daemon:
+
+    sysrc cbsd_statsd_hoster_enable=YES
+    sysrc cbsd_statsd_jail_enable=YES
+    sysrc cbsd_statsd_bhyve_enable=YES
+    service cbsd-statsd-hoster restart
+    service cbsd-statsd-jail restart
+    service cbsd-statsd-bhyve restart
+						</pre>
+					</li>
+
+					<li>Open ClonOS UI in your web browser.
+						<pre>
+  Default login: 'admin', default password: 'admin'
+						</pre>
+					</li>
+
+					<li>Enjoy the ClonOS !</li>
+				</ul>
+			</div>
+			<hr>
+		</div>
+		<footer class="footer">
+		<div class="container">
+			<center><p class="navbar-text col-md-12 col-sm-12 col-xs-12">&copy; 2017-2019 ClonOS.</p></center>
+		</div>
+		</footer>
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script src="/bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>

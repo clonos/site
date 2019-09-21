@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="../../favicon.ico">
+
+		<title>Free Open-Source Hosting Platform &laquo;ClonOS&raquo;</title>
+
+		<!-- Bootstrap core CSS -->
+		<link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<link href="/bootstrap/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+		<link href="/bootstrap/docs/examples/sticky-footer-navbar/sticky-footer-navbar.css" rel="stylesheet">
+
+		<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+		<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+		<script src="/bootstrap/docs/assets/js/ie-emulation-modes-warning.js"></script>
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		<style>
+			.jumbotron {background: url(/images/samson-back.jpg) no-repeat 50% 50%; overflow:hidden;color:white;text-shadow:0 0 4px black;}
+		</style>
+		<a href="https://github.com/clonos/control-pane" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="header clearfix">
+				<nav>
+				<ul class="nav nav-pills pull-right">
+					<li role="presentation"><a href="/index.html">About</a></li>
+					<li role="presentation" class="active"><a href="/errata.html">Errata</a></li>
+					<li role="presentation"><a href="/roadmap.html">RoadMap</a></li>
+					<li role="presentation"><a href="/installation_from_media.html">Installation</a></li>
+					<li role="presentation"><a href="/installation_on_freebsd.html">Installation on FreeBSD</a></li>
+					<li role="presentation"><a href="/download.html">Download</a></li>
+					<li role="presentation"><a href="/contact.html">Contact</a></li>
+					<li role="presentation"><a target="_blank" href="https://www.bsdstore.ru/en/donate.html">Support the project</a></li>
+				</ul>
+				</nav>
+				<h3 class="text-muted">Errata</h3>
+			</div>
+			<div class="jumbotron">
+				<h1>ClonOS</h1>
+				<p class="lead">FreeBSD based distro for virtual hosting platform and appliance</p>
+			</div>
+
+			<h2>Errata, Q&A:</h2>
+			<div class="row marketing">
+				<p><strong>Q:</strong> <strong>Where can I find the project source code and/or register issue/bug/idea?</strong></p>
+				<p><strong>A:</strong> We use GitHub. <strong>ClonOS</strong> = <a href="https://github.com/cbsd/cbsd">CBSD Project</a> (as backend) + <a href="https://github.com/clonos/control-pane">ClonOS UI</a></p>
+				<p>Use appropriate <strong>Issue</strong> link.</p>
+			</div> <!-- /container -->
+			<br>
+
+			<div class="row marketing">
+				<p><strong>Q:</strong> <strong>Why the virtual machine from the profile starts so long?</strong></p>
+				<p><strong>A:</strong> When you first create a virtual machine through a profile, it automatically downloads the ISO from official sites. View the task log to see the status of the task.</p>
+				<p>You can pre-warm images via CLI command. For cloud images:
+				<pre>
+cbsd fetch_iso keepname=0 conv2zvol=1 cloud=1 dstdir=default
+				</pre>
+				For ISO images:
+				<pre>
+cbsd fetch_iso keepname=0 cloud=0 dstdir=default
+				</pre>
+			Details: <a href="https://www.bsdstore.ru/en/cbsd_fetch.html#cbsd_partners">fetch_iso</a>
+			</div> <!-- /container -->
+			<br>
+			<div class="row marketing">
+				<p><strong>Q:</strong> <strong>Where does the profile fetch ISO images, can it be trusted?</strong></p>
+				<p><strong>A:</strong> List of official sites and mirrors which is uses by <a href="https://www.bsdstore.ru">CBSD</a> (and ClonOS) located in a public GitHub account with fixed official CRC sum: <a href="https://github.com/cbsd/cbsd-vmprofiles">cbsd-vmprofiles</a>.
+				<p>This list/repository is maintained/supported by the <strong>CBSD</strong> community. If you have a <a href="https://github.com">GitHub</a> account, perhaps one of these contributors - <a href="https://www.bsdstore.ru/en/cbsd_fetch.html#cbsd_partners">is You!</a>
+			</div> <!-- /container -->
+			<br>
+			<div class="row marketing">
+				<p><strong>Q:</strong> <strong>I do not find many basic functions in ClonOS</strong></p>
+				<p><strong>A:</strong> Work on the project is focused primarily on covering the entire of <a href="https://www.bsdstore.ru">CBSD</a> functionality.</p>
+				<p>If you are not afraid of the Unix command line, you can always make the settings and operations you need by using <a href="https://www.bsdstore.ru/en/docs.html">CBSD</a> CLI</p>
+				<p>Someday we will implement the rest of UI but it may take indefinite time since we are involved in the project in our free time.</p>
+				<p>This is not a commercial project, we just love BSD and want to create at least one such project. You can join us in the project or help and support with <a href="https://clonos.tekroutine.com/contact.html">donations</a> or hosting/development hardware or and mirrors or by using ClonOS in your work (thus creating a stream of error reports ;-)</p>
+			</div> <!-- /container -->
+			<br>
+		</div>
+		<footer class="footer">
+		<div class="container">
+			<center><p class="navbar-text col-md-12 col-sm-12 col-xs-12">&copy; 2017-2019 ClonOS.</p></center>
+		</div>
+		</footer>
+
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<script src="/bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
+	</body>
+</html>
