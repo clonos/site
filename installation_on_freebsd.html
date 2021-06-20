@@ -17,6 +17,7 @@ Free Open-Source Hosting Platform &laquo;ClonOS&raquo;
 
 <!-- Bootstrap core CSS -->
 		<link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/css/styles.css" rel="stylesheet">
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 		<link href="/bootstrap/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
@@ -118,6 +119,10 @@ FreeBSD based distro for virtual hosting platform and appliance
                 </p>
 			</div>
 
+			<div class="block black-text info">
+		<p>2020-10 upd: we reached the first fundraising goal and rented a server in Hetzner for development! Thank you for <a target="_blank" href="https://www.patreon.com/clonos">donating</a> !</p>
+			</div>
+
 			<hr />
 
 			<div class="row marketing">
@@ -195,14 +200,14 @@ www/php73-opcache devel/php73-json security/php73-hash lang/go
 					<li>
 Checkout ClonOS ports tree:
 						<pre>
-git clone https://github.com/clonos/clonos-ports-wip.git /tmp/clonos-ports
+git clone https://github.com/clonos/clonos-ports-wip.git /root/clonos-ports
 						</pre>
 					</li>
 					<li>
-Merge ClonOS port with your ports tree:
-						<pre>
-cp -a /tmp/clonos-ports/* /usr/ports/
-						</pre>
+Create overlays vars for ClonOS ports
+					<pre>
+echo 'OVERLAYS=/root/clonos-ports' >> /etc/make.conf
+					</pre>
 					</li>
 					<li>
 Build and install ClonOS
@@ -495,7 +500,7 @@ Enjoy the ClonOS !
 			<div class="container">
 				<center>
 					<p class="navbar-text col-md-12 col-sm-12 col-xs-12">
-&copy; 2017-2019 ClonOS.
+&copy; 2017-2021 ClonOS.
 					</p>
 				</center>
 			</div>

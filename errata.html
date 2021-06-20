@@ -13,6 +13,7 @@
 
 		<!-- Bootstrap core CSS -->
 		<link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/css/styles.css" rel="stylesheet">
 
 		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 		<link href="/bootstrap/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
@@ -56,7 +57,17 @@
 				<p class="lead">FreeBSD based distro for virtual hosting platform and appliance</p>
 			</div>
 
+			<div class="block black-text info">
+				<p>2020-10 upd: we reached the first fundraising goal and rented a server in Hetzner for development! Thank you for <a target="_blank" href="https://www.patreon.com/clonos">donating</a> !</p>
+			</div>
+
 			<h2>Errata, Q&A:</h2>
+			<div class="row marketing">
+				<p><strong>Q:</strong> <strong>How to upgrade the ClonOS ?</strong></p>
+				<p><strong>A:</strong>There are currently no ClonOS update mechanisms out-of-the box due to the lack of any build infrastructure. We are looking for <a href="https://github.com/freebsd/freebsd-quarterly/blob/master/2019q3/clonos.md">sponsorship</a> (see open task in FreeBSD 2019Q3 status reports) to do this.
+				However, you can use the standard update methods for FreeBSD to update your ClonOS servers (via pkg, svn / git or freebsd-update)</p>
+			</div> <!-- /container -->
+			<br>
 			<div class="row marketing">
 				<p><strong>Q:</strong> <strong>Where can I find the project source code and/or register issue/bug/idea?</strong></p>
 				<p><strong>A:</strong> We use GitHub. <strong>ClonOS</strong> = <a href="https://github.com/cbsd/cbsd">CBSD Project</a> (as backend) + <a href="https://github.com/clonos/control-pane">ClonOS UI</a></p>
@@ -89,13 +100,13 @@ cbsd fetch_iso keepname=0 cloud=0 dstdir=default
 				<p><strong>A:</strong> Work on the project is focused primarily on covering the entire of <a href="https://www.bsdstore.ru">CBSD</a> functionality.</p>
 				<p>If you are not afraid of the Unix command line, you can always make the settings and operations you need by using <a href="https://www.bsdstore.ru/en/docs.html">CBSD</a> CLI</p>
 				<p>Someday we will implement the rest of UI but it may take indefinite time since we are involved in the project in our free time.</p>
-				<p>This is not a commercial project, we just love BSD and want to create at least one such project. You can join us in the project or help and support with <a href="https://clonos.tekroutine.com/contact.html">donations</a> or hosting/development hardware or and mirrors or by using ClonOS in your work (thus creating a stream of error reports ;-)</p>
+				<p>This is not a commercial project, we just love BSD and want to create at least one such project. You can join us in the project or help and support with <a href="https://clonos.convectix.com/contact.html">donations</a> or hosting/development hardware or and mirrors or by using ClonOS in your work (thus creating a stream of error reports ;-)</p>
 			</div> <!-- /container -->
 			<br>
 		</div>
 		<footer class="footer">
 		<div class="container">
-			<center><p class="navbar-text col-md-12 col-sm-12 col-xs-12">&copy; 2017-2019 ClonOS.</p></center>
+			<center><p class="navbar-text col-md-12 col-sm-12 col-xs-12">&copy; 2017-2021 ClonOS.</p></center>
 		</div>
 		</footer>
 
