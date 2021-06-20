@@ -6,6 +6,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
 		<meta name="description" content="">
 		<meta name="author" content="">
 
@@ -25,12 +26,22 @@ Free Open-Source Hosting Platform &laquo;ClonOS&raquo;
 <!-- Custom styles for this template -->
 		<link href="/bootstrap/docs/examples/sticky-footer-navbar/sticky-footer-navbar.css" rel="stylesheet">
 
+		<script src="/bootstrap/docs/assets/js/ie-emulation-modes-warning.js">
+		</script>
+
+		<style>
+.jumbotron {background: url(/images/samson-back.jpg) no-repeat 50% 50%; overflow:hidden;color:white;text-shadow:0 0 4px black;}
+		</style>
+
+		<style>
+.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}
+		</style>
+
 <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
 		<!--[if lt IE 9]>
 			<script src="../../assets/js/ie8-responsive-file-warning.js">
 			</script>
 		<![endif]-->
-		<script src="/bootstrap/docs/assets/js/ie-emulation-modes-warning.js"></script>
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
@@ -40,24 +51,21 @@ Free Open-Source Hosting Platform &laquo;ClonOS&raquo;
 			</script>
 		<![endif]-->
 
-		<style>
-			.jumbotron {background: url(/images/samson-back.jpg) no-repeat 50% 50%; overflow:hidden;color:white;text-shadow:0 0 4px black;}
-		</style>
+	</head>
+
+	<body>
+
 		<a href="https://github.com/clonos/control-pane" class="github-corner" aria-label="View source on GitHub">
 			<svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
-				<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm">
+				<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z">
+				</path>
+				<path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm">
 				</path>
 				<path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body">
 				</path>
 			</svg>
 		</a>
-		<style>
-.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}
-		</style>
 
-	</head>
-
-	<body>
 		<div class="container">
 
 			<div class="header clearfix">
@@ -120,7 +128,13 @@ FreeBSD based distro for virtual hosting platform and appliance
 			</div>
 
 			<div class="block black-text info">
-		<p>2020-10 upd: we reached the first fundraising goal and rented a server in Hetzner for development! Thank you for <a target="_blank" href="https://www.patreon.com/clonos">donating</a> !</p>
+				<p>
+2020-10 upd: we reached the first fundraising goal and rented a server in Hetzner for development! Thank you for 
+					<a target="_blank" href="https://www.patreon.com/clonos">
+donating
+					</a>
+!
+				</p>
 			</div>
 
 			<hr />
@@ -129,11 +143,9 @@ FreeBSD based distro for virtual hosting platform and appliance
 				<h3 class="text-muted">
 Installing ClonOS/CBSD WEB UI via PKG
 				</h3>
-				<h3>
-					<p class="lead">
+				<p class="lead">
 ClonOS in pkg packages
-					</p>
-                </h3>
+				</p>
 				<p>
 					<strong>
 Daniel Shafer
@@ -173,13 +185,11 @@ pkg install clonos
 
 			<div class="row marketing">
 				<h3 class="text-muted">
-					Installing ClonOS/CBSD WEB UI on stock FreeBSD
+Installing ClonOS/CBSD WEB UI on stock FreeBSD
 				</h3>
-				<h3>
-					<p class="lead">
+				<p class="lead">
 Install ClonOS and dependencies
-					</p>
-                </h3>
+				</p>
 				<ul>
 					<li>
 Update ports tree first:
@@ -217,7 +227,11 @@ env BATCH=no make -C /usr/ports/www/clonos install
 					</li>
 				</ul>
 				<p>
-Follow <strong>post-message</strong> instruction
+Follow 
+					<strong>
+post-message
+					</strong>
+ instruction
 				</p>
 				<p>
 You must merge or copy working configuration files
@@ -442,7 +456,9 @@ service supervisord restart
 						</pre>
 					</li>
 					<li>
+						<p>
 Configure CBSD:
+						</p>
 						<p>
 1) ~cbsd/etc/modules.conf must have:
 							<pre>
@@ -484,13 +500,17 @@ service cbsd-statsd-bhyve restart
 						</p>
 					</li>
 					<li>
+						<p>
 Open ClonOS UI in your web browser.
+						</p>
 						<pre>
 Default login: 'admin', default password: 'admin'
 						</pre>
 					</li>
 					<li>
+						<p>
 Enjoy the ClonOS !
+						</p>
 					</li>
 				</ul>
 			</div>
