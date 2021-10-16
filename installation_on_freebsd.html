@@ -206,11 +206,9 @@ portsnap fetch extract
 					<li>
 Install ClonOS dependencies:
 						<pre>
-pkg install -y net/libvncserver security/gnutls databases/sqlite3 shells/bash www/npm \
-www/nginx sysutils/py-supervisor sysutils/cbsd security/ca_root_nss \
-www/node security/sudo databases/sqlite3 net/beanstalkd devel/git devel/pkgconf www/nginx \
-lang/php73 www/php73-session archivers/php73-zip databases/php73-sqlite3 databases/php73-pdo_sqlite \
-www/php73-opcache devel/php73-json security/php73-hash lang/go
+pkg install -y lang/python38 lang/php80 net/libvncserver security/gnutls databases/sqlite3 shells/bash www/npm \
+www/nginx sysutils/cbsd security/ca_root_nss www/node security/sudo net/beanstalkd devel/git devel/pkgconf \
+www/php80-session archivers/php80-zip databases/php80-sqlite3 databases/php80-pdo_sqlite www/php80-opcache lang/go
 						</pre>
 					</li>
 					<li>
@@ -228,7 +226,7 @@ echo 'OVERLAYS=/root/clonos-ports' >> /etc/make.conf
 					<li>
 Build and install ClonOS
 						<pre>
-env BATCH=no make -C /usr/ports/www/clonos install
+env BATCH=no make -C /root/clonos-ports/www/clonos install
 						</pre>
 					</li>
 				</ul>
@@ -334,7 +332,7 @@ edit
 						</strong>
 :
 						<pre>
-Defaults     env_keep += "workdir DIALOG NOCOLOR"
+Defaults     env_keep += "workdir DIALOG NOCOLOR CBSD_RNODE"
 Cmnd_Alias   WEB_CMD = /usr/local/bin/cbsd
 www   ALL=(ALL) NOPASSWD:SETENV: WEB_CMD
 						</pre>
@@ -349,49 +347,17 @@ cp /usr/local/etc/sudoers_10_www.clonos.sample /usr/local/etc/sudoers.d/10_www
 						</pre>
 					</li>
 					<li>
-Change 
-						<strong>
-/usr/local/etc/supervisord.conf
-						</strong>
- to:
+Enable and start websocket daemon:
 						<pre>
-[unix_http_server]
-file=/var/run/supervisor.sock
-chmod=0777
-chown=nobody:nobody
-[supervisorctl]
-serverurl=unix:///var/run/supervisor.sock
-[supervisord]
-logfile=/var/log/supervisor/supervisord.log
-pidfile=/var/run/supervisor/supervisord.pid
-nodaemon=false
-minfds=1024
-minprocs=200
-umask=022
-strip_ansi=false
-[rpcinterface:supervisor]
-supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface
-[include]
-files=/usr/local/etc/supervisor.d/*.conf
-						</pre>
-Or copy: 
-						<pre>
-cp /usr/local/etc/supervisord.conf.clonos.sample /usr/local/etc/supervisord.conf
+service clonos-ws enable
+service clonos-ws restart
 						</pre>
 					</li>
 					<li>
-					Make sure
-						<strong>
-/usr/local/etc/supervisor.d/program_wsclonos.conf
-						</strong>
- have correct path to CBSD workdir. Please check that line "environment=PATH.." in
-						<strong>
-/usr/local/etc/supervisor.d/program_wsclonos.conf
-						</strong>
- pointed to ~cbsd path in 'cbsd_workdir':
+Enable and start ClonOS node daemon:
 						<pre>
-environment=PATH=[.skipp..],cbsd_workdir="/usr/jails"
-                                            ^^^^^^^^^^
+service clonos-node-ws enable
+service clonos-node-ws restart
 						</pre>
 					</li>
 					<li>
@@ -446,28 +412,66 @@ cp /usr/local/etc/nginx/nginx.conf.clonos.sample /usr/local/etc/nginx/nginx.conf
 						</pre>
 					</li>
 					<li>
-Enable nginx, php-fpm and supervisord to run at system startup:
+Enable nginx, php-fpm and clonos_vnc2wss to run at system startup:
 						<pre>
 sysrc nginx_enable="YES"
 sysrc php_fpm_enable="YES"
 sysrc supervisord_enable="YES"
+sysrc clonos_vnc2wss_enable="YES"
 						</pre>
 					</li>
 					<li>
-Start nginx, php-fpm and supervisord to run at system startup:
+Start nginx and php-fpm:
 						<pre>
 service nginx restart
 service php-fpm restart
-service supervisord restart
 						</pre>
 					</li>
 					<li>
 						<p>
 Configure CBSD:
 						</p>
+
 						<p>
-1) ~cbsd/etc/modules.conf must have:
-							<pre>
+1) Install and compile vncterm module:
+						<pre>
+cbsd module mode=install vncterm
+make -C /usr/local/cbsd/modules/vncterm.d
+						</pre>
+						</p>
+
+						<p>
+2) Install additional ConvectIX scripts module:
+						<pre>
+cbsd module mode=install convectix
+						</pre>
+						</p>
+
+						<p>
+3) Install Puppet module
+						<pre>
+cbsd module mode=install puppet
+						</pre>
+						</p>
+
+						<p>
+4) Install ClonOS database module:
+						<pre>
+cbsd module mode=install clonos-database
+						</pre>
+						</p>
+
+						<p>
+5) Copy queue config file:
+						<pre>
+cp -a /usr/local/cbsd/modules/cbsd_queue.d/etc-sample/cbsd_queue.conf ~cbsd/etc/
+						</pre>
+						</p>
+
+						<p>
+6) Add additional module name into ~cbsd/etc/modules, 
+e.g. complete ~cbsd/etc/modules.conf must have:
+						<pre>
 pkg.d
 bsdconf.d
 zfsinstall.d
@@ -475,42 +479,63 @@ puppet.d
 convectix.d
 cbsd_queue.d
 vncterm.d
-							</pre>
+						</pre>
 Or copy: 
-							<pre>
+						<pre>
 cp /usr/local/etc/cbsd-modules.conf.clonos.sample ~cbsd/etc/modules.conf
-							</pre>
+						</pre>
 						</p>
+
 						<p>
-2) Re-run CBSD initenv to init modules:
-							<pre>
+7) Re-run CBSD initenv to init modules:
+						<pre>
 cbsd initenv
-							</pre>
+						</pre>
 						</p>
+
+
 						<p>
-3) Init web user database:
-							<pre>
+8) Init web user database:
+						<pre>
 sh /usr/local/cbsd/modules/forms.d/clonos_database/initforms.sh
-							</pre>
+						</pre>
 						</p>
+
 						<p>
-4) Configure and run CBSD RACCT stats daemon:
-							<pre>
+9) Configure and run CBSD RACCT stats daemon:
+						<pre>
 sysrc cbsd_statsd_hoster_enable=YES
 sysrc cbsd_statsd_jail_enable=YES
 sysrc cbsd_statsd_bhyve_enable=YES
 service cbsd-statsd-hoster restart
 service cbsd-statsd-jail restart
 service cbsd-statsd-bhyve restart
-							</pre>
+						</pre>
 						</p>
+
+						<p>
+10) Install/upgrade noVNC via npm:
+						<pre>
+cd /usr/local/www/clonos/public/novnc
+npm install .
+						</pre>
+						</p>
+
+						<p>
+11) 11) Create symlink from python3 to valid python bin:
+						<pre>
+ln -sf /usr/local/bin/python3.8 /usr/local/bin/python3
+						</pre>
+						</p>
+
 					</li>
 					<li>
 						<p>
 Open ClonOS UI in your web browser.
 						</p>
 						<pre>
-Default login: 'admin', default password: 'admin'
+Default login: 'admin'
+Default password: 'admin'
 						</pre>
 					</li>
 					<li>
