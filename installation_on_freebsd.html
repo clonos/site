@@ -206,6 +206,7 @@ portsnap fetch extract
 					<li>
 Install ClonOS dependencies:
 						<pre>
+pkg update -f
 pkg install -y lang/python38 lang/php80 net/libvncserver security/gnutls databases/sqlite3 shells/bash www/npm \
 www/nginx sysutils/cbsd security/ca_root_nss www/node security/sudo net/beanstalkd devel/git devel/pkgconf \
 www/php80-session archivers/php80-zip databases/php80-sqlite3 databases/php80-pdo_sqlite www/php80-opcache lang/go
@@ -497,7 +498,7 @@ cbsd initenv
 						<p>
 8) Init web user database:
 						<pre>
-sh /usr/local/cbsd/modules/forms.d/clonos_database/initforms.sh
+sh /usr/local/cbsd/modules/clonos_database/initforms.sh
 						</pre>
 						</p>
 
@@ -522,7 +523,7 @@ npm install .
 						</p>
 
 						<p>
-11) 11) Create symlink from python3 to valid python bin:
+11) Create symlink from python3 to valid python bin:
 						<pre>
 ln -sf /usr/local/bin/python3.8 /usr/local/bin/python3
 						</pre>
